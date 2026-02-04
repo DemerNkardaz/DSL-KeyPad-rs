@@ -1,0 +1,12 @@
+[package]
+name = "kp-launcher"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+kp-core.workspace = true
+kp-ui.workspace = true
+kp-protocol.workspace = true
+
+[lints]
+workspace = true
