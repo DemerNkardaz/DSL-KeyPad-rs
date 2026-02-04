@@ -1,4 +1,4 @@
-use super::super::entities::character_entity::CharacterEntity;
+use super::super::entities::character_entity::structs::CharacterEntity;
 use std::collections::{HashMap, HashSet};
 
 pub struct CharacterStore {
