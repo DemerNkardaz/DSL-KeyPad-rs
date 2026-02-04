@@ -1,0 +1,20 @@
+body {
+	margin: 0;
+	width: 100vw;
+	height: 100vh;
+	/* Чтобы body занимал весь экран */
+	background-color: aquamarine;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	&:hover {
+		background-color: coral;
+	}
+
+	&::after {
+		content: "Наведи на меня!";
+		font-family: sans-serif;
+		font-size: 2rem;
+	}
+}
