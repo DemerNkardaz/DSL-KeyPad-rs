@@ -7,5 +7,9 @@
 	"rust-analyzer.check.command": "clippy",
 	"[rust]": {
 		"editor.semanticHighlighting.enabled": true
-	}
+	},
+	"[ts]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.formatOnSave": true
+	},
 }

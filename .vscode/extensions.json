@@ -9,6 +9,8 @@
 		"JScearcy.rust-doc-viewer",
 		"ZhangYue.rust-mod-generator",
 		"swellaby.vscode-rust-test-adapter",
-		"usernamehw.errorlens"
+		"usernamehw.errorlens",
+
+		"yoavbls.pretty-ts-errors"
 	]
 }
