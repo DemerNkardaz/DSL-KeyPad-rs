@@ -16,5 +16,10 @@ mime_guess.workspace = true
 serde.workspace = true
 serde_json.workspace = true
 
+
+winapi.workspace = true
+rdev.workspace = true
+evdev-rs.workspace = true
+
 [lints]
 workspace = true
