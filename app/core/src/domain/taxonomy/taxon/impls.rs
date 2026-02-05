@@ -35,3 +35,33 @@ impl Taxonomy {
 		false
 	}
 }
+
+impl Taxonomy {
+	pub fn print_hierarchy(&self) {
+		let roots: Vec<_> = self.nodes.values().filter(|node| node.parents.is_empty()).collect();
+
+		for root in roots {
+			self.print_node(root.id, 0, &mut vec![]);
+		}
+	}
+
+	fn print_node(&self, id: TaxonKind, depth: usize, path: &mut Vec<TaxonKind>) {
+		// Проверка на цикл
+		if path.contains(&id) {
+			return;
+		}
+
+		let indent = "  ".repeat(depth);
+		println!("{}├─ {}", indent, id.as_ref());
+
+		path.push(id);
+
+		for node in self.nodes.values() {
+			if node.parents.contains(&id) {
+				self.print_node(node.id, depth + 1, path);
+			}
+		}
+
+		path.pop();
+	}
+}

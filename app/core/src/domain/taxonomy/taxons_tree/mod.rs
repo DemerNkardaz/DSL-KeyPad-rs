@@ -6,20 +6,35 @@ static TAXONOMY_TREE: LazyLock<Taxonomy> = LazyLock::new(|| {
 	use super::TaxonKind::*;
 
 	Taxonomy::new(vec![
-		TaxonNode { id: ROMAN, name: "Roman", parents: &[] },
-		TaxonNode { id: LATIN, name: "Latin", parents: &[] },
-		TaxonNode { id: CYRILLIC, name: "Cyrillic", parents: &[] },
-		TaxonNode { id: HELLENIC, name: "Hellenic", parents: &[] },
-		TaxonNode { id: NUMERAL, name: "Numeral", parents: &[ROMAN] },
+		TaxonNode { id: Unknown, parents: &[] },
+		TaxonNode { id: Roman, parents: &[] },
+		TaxonNode { id: Latin, parents: &[] },
+		TaxonNode { id: Cyrillic, parents: &[] },
+		TaxonNode { id: Hellenic, parents: &[] },
+		TaxonNode { id: Numeral, parents: &[Roman, OldHungarian] },
+		TaxonNode { id: Ligature, parents: &[Latin, Cyrillic] },
+		TaxonNode { id: Digraph, parents: &[Latin, Cyrillic] },
 		TaxonNode {
-			id: LIGATURE,
-			name: "Ligature",
-			parents: &[LATIN, CYRILLIC],
-		},
-		TaxonNode {
-			id: ACCENTED,
-			name: "Accented",
-			parents: &[LATIN, LIGATURE],
+			id: Accented,
+			parents: &[Latin, Cyrillic, Ligature, Digraph],
 		},
 	])
 });
+
+#[cfg(test)]
+mod taxontreetest {
+	use super::super::TaxonKind;
+	use super::*;
+
+	#[test]
+	fn test_hierarchy() {
+		TAXONOMY_TREE.print_hierarchy();
+	}
+
+	#[test]
+	fn test_descendant() {
+		assert!(TAXONOMY_TREE.is_descendant_of(TaxonKind::Accented, TaxonKind::Latin));
+
+		assert!(!TAXONOMY_TREE.is_descendant_of(TaxonKind::Latin, TaxonKind::Accented));
+	}
+}

@@ -1,50 +1,57 @@
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[allow(non_camel_case_types)]
+use strum_macros::{AsRefStr, VariantNames};
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, VariantNames, AsRefStr)]
 pub enum TaxonKind {
+	None,
+	Unknown,
 	// Languages Scripts and General Categories
-	ROMAN,
-	LATIN,
-	CYRILLIC,
-	HELLENIC,
-	SHAVIAN,
-	DESERET,
-	INTERNATIONAL_PHONETIC_ALPHABET,
-	GERMANIC_RUNES,
-	CIRTH_RUNIC,
-	GLAGOLITIC,
-	MANICHAEAN,
-	ANCIENT_NORTH_ARABIC,
-	ANCIENT_SOUTH_ARABIC,
-	OLD_PERSIAN,
+	Roman,
+	Latin,
+	Cyrillic,
+	Hellenic,
+
+	Shavian,
+	Deseret,
+
+	InternationalPhoneticAlphabet,
+
+	GermanicRunes,
+	CirthRunes,
+	Glagolitic,
+
+	Manichaean,
+
+	AncientNorthArabian,
+	AncientSouthArabian,
+
+	OldPersian,
+	OldHungarian,
 
 	// Specific Taxons
-	LIGATURE,
-	DIGRAPH,
-	ACCENTED,
-	NUMERAL,
+	Ligature,
+	Digraph,
+	Accented,
+	Numeral,
 
 	// Script Specific
 	// Latin
-	HELLENIC_DESCENDENT,
+	HellenicDescendent,
 
 	// Germanic Runes
-	ELDER_FUTHARK,
-	ANGLO_SAXON_FUTHORK,
-	YOUNGER_FUTHARK,
-	ALMANAC_RUNES,
-	LATER_YOUNGER_FUTHARK,
-	MEDIEVAL_RUNES,
+	ElderFuthark,
+	AngloSaxonFuthork,
+	YoungerFuthark,
+	AlmanacRunes,
+	LaterYoungerFuthark,
+	MedievalRunes,
 
 	// Other
-	ALCHEMICAL_SYMBOL,
-	ASTRONOMICAL_SYMBOL,
-	ASTROLOGICAL_SYMBOL,
+	Alchemical,
+	Astronomical,
+	Astrological,
 
-	ZHONG_GUO,
-	DAO,
-	YI_JING,
-	TAI_XUAN_JING,
-	MAJIANG,
-
-	NONE,
+	ZhongGuo,
+	Dao,
+	YiJing,
+	TaiXaunJing,
+	MaJiang,
 }

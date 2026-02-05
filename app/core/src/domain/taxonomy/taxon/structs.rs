@@ -8,7 +8,6 @@ pub struct Taxonomy {
 #[derive(Debug)]
 pub struct TaxonNode {
 	pub id: TaxonKind,
-	pub name: &'static str,
 	pub parents: &'static [TaxonKind],
 }
 
