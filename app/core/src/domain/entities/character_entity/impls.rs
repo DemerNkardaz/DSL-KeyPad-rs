@@ -1,6 +1,6 @@
 use std::fmt;
 
-use super::structs::*;
+use super::structs::{CharacterComposition, CharacterEntity};
 
 #[allow(clippy::must_use_candidate)]
 impl CharacterEntity {
