@@ -13,6 +13,18 @@ mod tests {
 	}
 }
 
+pub const UI_PATH: &str = env!("UI");
+
+#[cfg(test)]
+mod test22s {
+	use super::*;
+
+	#[test]
+	fn test_ui_path() {
+		println!("UI path: {UI_PATH}");
+	}
+}
+
 // Использовать ipc handler для общения между растом и браузерным окном
 
 // use wry::webview::WebViewBuilder;

@@ -10,7 +10,7 @@ import { parse } from 'yaml';
 
 const meta = parse(metaFileRaw);
 
-const title = `${meta.title} — ${meta.version} ${meta.status}`;
+const title = `${meta.title} — ${meta.version} ${meta.status}`;
 const favicon = { rel: 'icon', type: 'image/svg+xml', href: iconUrl };
 
 const headTitle = document.querySelector('title');
