@@ -1,0 +1,46 @@
+version = 1
+
+# https://reuse.software
+
+[[annotations]]
+path = [
+  "app/**",
+  "assets/web/**",
+  "tests/**",
+  ".github/**",
+  ".vscode/**",
+  ".cargo/**",
+  ".editorconfig",
+  ".gitattributes",
+  ".gitignore",
+
+  ".rustfmt.toml",
+
+  "Cargo.toml",
+  "Cargo.lock",
+
+  "package.json",
+  "package-lock.json",
+  "pnpm-lock.yaml",
+  "postcss.config.js",
+  "tsconfig.json",
+  "vite.config.ts",
+
+  "README.md",
+  "CONTRIBUTING.md",
+  "CODE_OF_CONDUCT.md",
+  "SECURITY.md",
+  "LICENSE",
+
+  "Makefile.toml",
+  "clippy.toml",
+  "deny.toml",
+  "rust-toolchain.toml",
+  "REUSE.toml",
+
+  "cspell.dic",
+  "cspell.yml",
+]
+precedence = "override"
+SPDX-FileCopyrightText = "Yalla Nkardaz"
+SPDX-License-Identifier = "MIT"

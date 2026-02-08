@@ -13,11 +13,12 @@
     /* Paths */
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./web/src/*"],
-      "@shared/*": ["./web/src/shared/*"],
-      "@components/*": ["./web/src/shared/components/*"],
-      "@utils/*": ["./web/src/shared/utils/*"],
-      "@types/*": ["./web/src/shared/types/*"]
+      "@/*": ["./web/*"],
+      "@shared/*": ["./assets/web/shared/*"],
+      "@windows/*": ["./assets/web/windows/*"],
+      // "@components/*": ["./web/shared/components/*"],
+      // "@utils/*": ["./web/shared/utils/*"],
+      // "@types/*": ["./web/shared/types/*"]
     },
 
     /* Emit */
@@ -39,11 +40,14 @@
     "skipLibCheck": true
   },
   "include": [
-    "web/src/**/*.ts"
+    "assets/web/**/*.ts",
+    "assets/web/**/*.vue",
+    "vite.config.ts"
   ],
   "exclude": [
     "node_modules",
     "assets",
+		"dist",
     "target"
   ]
 }
