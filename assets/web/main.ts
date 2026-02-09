@@ -1,8 +1,17 @@
-import { createApp } from 'vue';
-import App from './App.vue';
+// import { createApp } from 'vue';
+// import App from './App.vue';
 
-const app = createApp(App);
-app.mount('#app');
+// const app = createApp(App);
+// app.mount('#app');
+
+import { createApp } from 'vue'
+import App from './App.vue'
+import router from './router'
+
+createApp(App)
+  .use(router)
+  .mount('#app')
+
 
 import iconUrl from '@assets/app.svg';
 import metaFileRaw from '@assets/meta.yml?raw';
