@@ -10,16 +10,17 @@ pub struct CharacterEntity {
 	pub unicode_data: CharacterUnicodeData,
 	pub composition: CharacterComposition,
 	pub options: CharacterOptions,
-	pub hotkeys: Vec<CharacterHotKey>,
+	pub hotkeys: Option<Vec<CharacterHotKey>>,
 	pub localization: CharacterLocalizationAttributes,
 	pub alternative_display: CharacterAlternativeDisplay,
+	pub children: Option<Vec<CharacterEntity>>, // Superscript, Subscript, Fraktur, Small Capital
 }
 
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct CharacterMetadata {
-	pub tags: Vec<String>,
-	pub titles: Vec<String>,
-	pub description: String,
+	pub tags: Option<Vec<String>>,
+	pub titles: Option<Vec<String>>,
+	pub description: Option<String>,
 	pub groups: Vec<Arc<str>>,
 	pub category: String,
 }
@@ -41,7 +42,7 @@ pub struct CharacterUnicodeData {
 
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct CharacterComposition {
-	pub compositions: Vec<String>,
+	pub compositions: Option<Vec<String>>,
 }
 
 #[derive(Debug, Clone, PartialEq, Eq)]
@@ -54,23 +55,24 @@ pub struct CharacterOptions {
 
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct CharacterLocalizationAttributes {
-	pub composited_name: bool,                      // if true then field below will be used to compose display name
-	pub name: CharacterLocalizationParts,           // A, B, C, Alpha, Beta, Gamma, Omega, Epsilon
-	pub secondary_name: CharacterLocalizationParts, // (Еры с Ерем) → Ы (Еры с Ерем)
-	pub script: CharacterLocalizationPart,          // Latin, Cyrillic, Hellenic
-	pub class: CharacterLocalizationPart,           // Letter, Symbol, Numeral
+	pub composited_name: bool,                              // if true then field below will be used to compose display name
+	pub name: Option<CharacterLocalizationParts>,           // A, B, C, Alpha, Beta, Gamma, Omega, Epsilon
+	pub secondary_name: Option<CharacterLocalizationParts>, // (Еры с Ерем) → Ы (Еры с Ерем)
+	pub script: Option<CharacterLocalizationPart>,          // Latin, Cyrillic, Hellenic
+	pub class: Option<CharacterLocalizationPart>,           // Letter, Symbol, Numeral
 }
 
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct CharacterLocalizationParts {
-	pub before: String,
+	pub before: Option<String>,
 	pub middle: String,
-	pub after: String,
+	pub after: Option<String>,
 }
 
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct CharacterHotKey {
-	pub scripter_mode: ScripterMode,
+	pub scripter_mode: Option<ScripterMode>,
+	pub mode: Option<HotkeysMode>,
 	pub target_language: KeyboardLanguage,
 	pub key_combination: String,
 }

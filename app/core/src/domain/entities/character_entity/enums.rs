@@ -36,3 +36,10 @@ pub enum ScripterMode {
 	Glagolitic,
 	Hellenic,
 }
+
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub enum HotkeysMode {
+	Common,
+	SecondaryKeys,
+	TertiaryKeys,
+}
