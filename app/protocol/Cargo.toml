@@ -11,6 +11,9 @@ keywords.workspace = true
 homepage.workspace = true
 repository.workspace = true
 
+[package.metadata]
+status.workspace = true
+
 [dependencies]
 
 [lints]

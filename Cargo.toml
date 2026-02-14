@@ -2,6 +2,9 @@
 members = ["app/*"]
 resolver = "2"
 
+[workspace.metadata]
+status = "α"
+
 [workspace.package]
 version = "0.1.0"
 edition = "2024"
