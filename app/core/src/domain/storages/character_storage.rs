@@ -1,4 +1,4 @@
-use super::super::entities::character_entity::structs::CharacterEntity;
+// use super::super::entities::character_entity::structs::CharacterEntity;
 use std::collections::{HashMap, HashSet};
 
 pub struct CharacterStore {
@@ -27,55 +27,62 @@ impl CharacterStore {
 	}
 
 	pub fn add(&mut self, entity: CharacterEntity) {
-		let id = entity.id;
-
-		// 1. Индексация слов для поиска (из имени и описания)
-		let words = self.tokenize(&format!("{} {}", entity.unicode_data.name, entity.metadata.description));
-		for word in words {
-			self.word_index.entry(word).or_default().push(id);
-		}
-
-		// 2. Индексация тегов
-		for tag in &entity.metadata.tags {
-			self.tag_index.entry(tag.to_lowercase()).or_default().push(id);
-		}
-
-		// 3. Индексация категории
-		self.category_index.entry(entity.metadata.category.to_lowercase()).or_default().push(id);
-
-		// 4. Индекс по точному имени
-		self.name_index.insert(entity.unicode_data.name.to_lowercase(), id);
-
-		// 5. Основное хранилище
-		self.entities.insert(id, entity);
+		()
+	}
+	pub fn remove(&mut self, entity: CharacterEntity) {
+		()
 	}
 
-	pub fn remove(&mut self, id: u32) {
-		if let Some(entity) = self.entities.remove(&id) {
-			// Очистка name_index
-			self.name_index.remove(&entity.unicode_data.name.to_lowercase());
+	// pub fn add(&mut self, entity: CharacterEntity) {
+	// 	let id = entity.id;
 
-			// Очистка тегов
-			for tag in &entity.metadata.tags {
-				if let Some(list) = self.tag_index.get_mut(&tag.to_lowercase()) {
-					list.retain(|&x| x != id);
-				}
-			}
+	// 	// 1. Индексация слов для поиска (из имени и описания)
+	// 	let words = self.tokenize(&format!("{} {}", entity.unicode_data.name, entity.metadata.description));
+	// 	for word in words {
+	// 		self.word_index.entry(word).or_default().push(id);
+	// 	}
 
-			// Очистка категорий
-			if let Some(list) = self.category_index.get_mut(&entity.metadata.category.to_lowercase()) {
-				list.retain(|&x| x != id);
-			}
+	// 	// 2. Индексация тегов
+	// 	for tag in &entity.metadata.tags {
+	// 		self.tag_index.entry(tag.to_lowercase()).or_default().push(id);
+	// 	}
 
-			// Очистка word_index
-			let words = self.tokenize(&format!("{} {}", entity.unicode_data.name, entity.metadata.description));
-			for word in words {
-				if let Some(list) = self.word_index.get_mut(&word) {
-					list.retain(|&x| x != id);
-				}
-			}
-		}
-	}
+	// 	// 3. Индексация категории
+	// 	self.category_index.entry(entity.metadata.category.to_lowercase()).or_default().push(id);
+
+	// 	// 4. Индекс по точному имени
+	// 	self.name_index.insert(entity.unicode_data.name.to_lowercase(), id);
+
+	// 	// 5. Основное хранилище
+	// 	self.entities.insert(id, entity);
+	// }
+
+	// pub fn remove(&mut self, id: u32) {
+	// 	if let Some(entity) = self.entities.remove(&id) {
+	// 		// Очистка name_index
+	// 		self.name_index.remove(&entity.unicode_data.name.to_lowercase());
+
+	// 		// Очистка тегов
+	// 		for tag in &entity.metadata.tags {
+	// 			if let Some(list) = self.tag_index.get_mut(&tag.to_lowercase()) {
+	// 				list.retain(|&x| x != id);
+	// 			}
+	// 		}
+
+	// 		// Очистка категорий
+	// 		if let Some(list) = self.category_index.get_mut(&entity.metadata.category.to_lowercase()) {
+	// 			list.retain(|&x| x != id);
+	// 		}
+
+	// 		// Очистка word_index
+	// 		let words = self.tokenize(&format!("{} {}", entity.unicode_data.name, entity.metadata.description));
+	// 		for word in words {
+	// 			if let Some(list) = self.word_index.get_mut(&word) {
+	// 				list.retain(|&x| x != id);
+	// 			}
+	// 		}
+	// 	}
+	// }
 
 	pub fn get_by_id(&self, id: u32) -> Option<&CharacterEntity> {
 		self.entities.get(&id)
