@@ -15,7 +15,7 @@ pub struct CharacterEntity {
 	pub alternative_display: CharacterAlternativeDisplay,
 	pub children: Option<Vec<CharacterEntity>>, // Superscript, Subscript, Fraktur, Small Capital
 }
-
+ 
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct CharacterMetadata {
 	pub tags: Option<Vec<String>>,
